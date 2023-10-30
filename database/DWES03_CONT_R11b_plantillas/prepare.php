@@ -108,6 +108,7 @@
 
 <div id="pie">
 <?php
+    $mensaje = "";
     // Si se produjo algún error se muestra en el pie
     if ($error != null) echo "<p>Se ha producido un error! $mensaje</p>";
     else {
