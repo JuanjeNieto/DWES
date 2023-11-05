@@ -35,32 +35,32 @@ create table IF NOT EXISTS Ventas (
 );
 
 --
--- Inserción de datos
+-- Inserciï¿½n de datos
 --
 
-insert into Comerciales values ('111','Pedro Alonso Jiménez',1200.50,0,'1960/01/02');
-insert into Comerciales values ('222','Julia Pérez Arribas',1305.75,1,'1971/11/12');
-insert into Comerciales values ('333','Juan Lozano Gómez',1080.25,3,'1975/01/08');
-insert into Comerciales values ('444','Sandra Molina Sánchez',1120.00,2,'1969/09/05');
-insert into Comerciales values ('555','Salvador Beltrán Jiménez',975.50,0,'1980/11/10');
-insert into Comerciales values ('666','Beatriz Martín Gutiérrez',1175.00,1,'1970/06/11');
-insert into Comerciales values ('777','Eduardo Martínez Puig',1100.50,2,'1967/06/01');
+insert into Comerciales values ('111','Pedro Alonso JimÃ©nez',1200.50,0,'1960/01/02');
+insert into Comerciales values ('222','Julia PÃ©rez Arribas',1305.75,1,'1971/11/12');
+insert into Comerciales values ('333','Juan Lozano GÃ³mez',1080.25,3,'1975/01/08');
+insert into Comerciales values ('444','Sandra Molina SÃ¡nchez',1120.00,2,'1969/09/05');
+insert into Comerciales values ('555','Salvador BeltrÃ¡n JimÃ©nez',975.50,0,'1980/11/10');
+insert into Comerciales values ('666','Beatriz MartÃ­n GutiÃ©rrez',1175.00,1,'1970/06/11');
+insert into Comerciales values ('777','Eduardo MartÃ­nez Puig',1100.50,2,'1967/06/01');
 insert into Comerciales values ('888','Juan Antonio Ochando Serrano',1000.50,0,'1982/03/03');
-insert into Comerciales values ('999','Marina Pérez Blanco',1070.20,3,'1972/11/07');
+insert into Comerciales values ('999','Marina PÃ©rez Blanco',1070.20,3,'1972/11/07');
 
-
-insert into Productos values ('AC0001', 'Abrigo Caballero', 'Piel Color Marrón',  120.50, 15);
-insert into Productos values ('AS0001', 'Abrigo Señora', 'Piel Color Marrón',  110.75, 25);
+insert into Productos values ('AC0001', 'Abrigo Caballero', 'Piel Color MarrÃ³n',  120.50, 15);
+insert into Productos values ('AS0001', 'Abrigo SeÃ±ora', 'Piel Color MarrÃ³n',  110.75, 25);
 insert into Productos values ('CC0001', 'Camisa Caballero', 'Cuadros',  35.99, 10);
-insert into Productos values ('PC0001', 'Pantalón Caballero', 'Vaquero',  34.90, 35);
-insert into Productos values ('PC0002', 'Pantalón Caballero', 'Pana',  25.90, 0);
+insert into Productos values ('PC0001', 'PantalÃ³n Caballero', 'Vaquero',  34.90, 35);
+insert into Productos values ('PC0002', 'PantalÃ³n Caballero', 'Pana',  25.90, 0);
 insert into Productos values ('AC0002', 'Abrigo Caballero', 'Piel Color Negro',  120.50, 15);
 insert into Productos values ('CC0002', 'Camisa Caballero', 'Lisa Color Blanco',  35.99, 10);
 insert into Productos values ('CC0003', 'Camisa Caballero', 'Lisa Color Azul',  35.99, 10);
-insert into Productos values ('AS0002', 'Abrigo Señora', 'Piel Color Negro',  120.75, 15);
-insert into Productos values ('AS0003', 'Abrigo Señora', 'Ante  Color Marrón',  90.95, 35);
-insert into Productos values ('PS0001', 'Pantalón Señora', 'Vaquero',  30.90, 30);
-insert into Productos values ('PS0002', 'Pantalón Señora', 'Lino',  39.90, 40);
+insert into Productos values ('AS0002', 'Abrigo SeÃ±ora', 'Piel Color Negro',  120.75, 15);
+insert into Productos values ('AS0003', 'Abrigo SeÃ±ora', 'Ante  Color MarrÃ³n',  90.95, 35);
+insert into Productos values ('PS0001', 'PantalÃ³n SeÃ±ora', 'Vaquero',  30.90, 30);
+insert into Productos values ('PS0002', 'PantalÃ³n SeÃ±ora', 'Lino',  39.90, 40);
+
 
 
 insert into Ventas values ('111','PC0001',24,'2014/10/10');

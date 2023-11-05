@@ -3,23 +3,17 @@
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
 
-
-function conectarBaseDeDatos() {
-    try {
-        $pdo = new PDO("mysql:host=localhost;dbname=ventas_comerciales", "dwes", "dwes");
-
-
-        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        return $pdo;
-    } catch (PDOException $e) {
-        die("Error de conexión a la base de datos: " . $e->getMessage());
-    }
+try {
+    $pdo = new PDO("mysql:host=localhost;dbname=ventas_comerciales", "dwes", "dwes");
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+} catch (PDOException $e) {
+    die("Error de conexión a la base de datos: " . $e->getMessage());
 }
 
 function consultarVentasPorComercial($comercial_id) {
+    global $pdo;
     try {
-        $pdo = conectarBaseDeDatos();
-        $stmt = $pdo->prepare("SELECT * FROM Ventas WHERE codComercial = :comercial_id");
+        $stmt = $pdo->prepare("SELECT codComercial, refProducto, cantidad, fecha FROM Ventas WHERE codComercial = :comercial_id");
         $stmt->bindParam(':comercial_id', $comercial_id, PDO::PARAM_STR);
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -28,11 +22,9 @@ function consultarVentasPorComercial($comercial_id) {
     }
 }
 
-
-
 function consultarComerciales() {
+    global $pdo;
     try {
-        $pdo = conectarBaseDeDatos();
         $stmt = $pdo->query("SELECT codigo, nombre FROM Comerciales");
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     } catch (PDOException $e) {
@@ -40,10 +32,9 @@ function consultarComerciales() {
     }
 }
 
-
 function consultarProductos() {
+    global $pdo;
     try {
-        $pdo = conectarBaseDeDatos();
         $stmt = $pdo->query("SELECT referencia, nombre FROM Productos");
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     } catch (PDOException $e) {
@@ -51,19 +42,54 @@ function consultarProductos() {
     }
 }
 
-function insertarVenta($comercial_id, $producto_referencia, $fecha, $cantidad, $precio) {
-    
+function insertarVenta($comercial_id, $producto_referencia, $fecha, $cantidad) {
+    global $pdo;
+    try {
+        $stmt = $pdo->prepare("INSERT INTO Ventas (codComercial, refProducto, cantidad, fecha) VALUES (:comercial_id, :producto_referencia, :cantidad, :fecha)");
+        $stmt->bindParam(':comercial_id', $comercial_id, PDO::PARAM_STR);
+        $stmt->bindParam(':producto_referencia', $producto_referencia, PDO::PARAM_STR);
+        $stmt->bindParam(':cantidad', $cantidad, PDO::PARAM_INT);
+        $stmt->bindParam(':fecha', $fecha, PDO::PARAM_STR);
+        $stmt->execute();
+    } catch (PDOException $e) {
+        die("Error al insertar venta: " . $e->getMessage());
+    }
 }
 
-function modificarVenta($venta_id, $comercial_id, $producto_referencia, $fecha, $cantidad, $precio) {
-    
+function modificarVenta($venta_id, $comercial_id, $producto_referencia, $fecha, $cantidad) {
+    global $pdo;
+    try {
+        $stmt = $pdo->prepare("UPDATE Ventas SET codComercial = :comercial_id, refProducto = :producto_referencia, cantidad = :cantidad, fecha = :fecha WHERE venta_id = :venta_id");
+        $stmt->bindParam(':comercial_id', $comercial_id, PDO::PARAM_STR);
+        $stmt->bindParam(':producto_referencia', $producto_referencia, PDO::PARAM_STR);
+        $stmt->bindParam(':cantidad', $cantidad, PDO::PARAM_INT);
+        $stmt->bindParam(':fecha', $fecha, PDO::PARAM_STR);
+        $stmt->bindParam(':venta_id', $venta_id, PDO::PARAM_INT);
+        $stmt->execute();
+    } catch (PDOException $e) {
+        die("Error al modificar venta: " . $e->getMessage());
+    }
 }
 
 function eliminarVenta($venta_id) {
-   
+    global $pdo;
+    try {
+        $stmt = $pdo->prepare("DELETE FROM Ventas WHERE venta_id = :venta_id");
+        $stmt->bindParam(':venta_id', $venta_id, PDO::PARAM_INT);
+        $stmt->execute();
+    } catch (PDOException $e) {
+        die("Error al eliminar venta: " . $e->getMessage());
+    }
 }
 
 function controlIntegridadReferencialVenta($producto_referencia) {
-    
+    global $pdo;
+    try {
+        $stmt = $pdo->prepare("SELECT * FROM Ventas WHERE refProducto = :producto_referencia");
+        $stmt->bindParam(':producto_referencia', $producto_referencia, PDO::PARAM_STR);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    } catch (PDOException $e) {
+        die("Error al verificar integridad referencial: " . $e->getMessage());
+    }
 }
-?>

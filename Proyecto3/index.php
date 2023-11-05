@@ -2,6 +2,7 @@
 <html>
 <head>
     <title>Gestión de Ventas - Juanje</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
 </head>
 <body>
     <h1>Juanjetienda - Menú</h1>
