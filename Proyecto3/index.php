@@ -8,6 +8,7 @@
     <h1>Juanjetienda - Menú</h1>
     <ul>
         <li><a href="consultar_ventas.php">Consultar Ventas</a></li>
+        <li><a href="consultar_datos.php">Consultar Datos</a></li>
         <li><a href="insertar_datos.php">Insertar Datos</a></li>
         <li><a href="modificar_datos.php">Modificar Datos</a></li>
         <li><a href="eliminar_datos.php">Eliminar Datos</a></li>

@@ -24,23 +24,23 @@ function consultarVentasPorComercial($comercial_id) {
 
 function consultarComerciales() {
     global $pdo;
-    try {
-        $stmt = $pdo->query("SELECT codigo, nombre FROM Comerciales");
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
-    } catch (PDOException $e) {
-        die("Error al consultar comerciales: " . $e->getMessage());
-    }
+    return consultarDatos($pdo, "Comerciales", ["codigo", "nombre"]);
 }
 
 function consultarProductos() {
     global $pdo;
+    return consultarDatos($pdo, "Productos", ["referencia", "nombre"]);
+}
+
+function consultarDatos($pdo, $table, $columns) {
     try {
-        $stmt = $pdo->query("SELECT referencia, nombre FROM Productos");
+        $stmt = $pdo->query("SELECT " . implode(", ", $columns) . " FROM " . $table);
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     } catch (PDOException $e) {
-        die("Error al consultar productos: " . $e->getMessage());
+        die("Error al consultar $table: " . $e->getMessage());
     }
 }
+
 
 function insertarVenta($comercial_id, $producto_referencia, $fecha, $cantidad) {
     global $pdo;
