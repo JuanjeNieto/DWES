@@ -28,6 +28,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["table"])) {
     <form method="post">
         <label for="table">Selecciona una tabla:</label>
         <select name="table">
+        <option value="default" selected>Selecciona una tabla</option>
             <option value="comerciales">Comerciales</option>
             <option value="productos">Productos</option>
         </select>
