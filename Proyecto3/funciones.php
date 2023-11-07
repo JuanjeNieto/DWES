@@ -55,6 +55,36 @@ function insertarVenta($comercial_id, $producto_referencia, $fecha, $cantidad) {
         die("Error al insertar venta: " . $e->getMessage());
     }
 }
+function insertarComercial($codigo, $nombre, $salario, $hijos, $fNacimiento) {
+    global $pdo;
+    try {
+        $stmt = $pdo->prepare("INSERT INTO Comerciales (codigo, nombre, salario, hijos, fNacimiento) VALUES (:codigo, :nombre, :salario, :hijos, :fNacimiento)");
+        $stmt->bindParam(':codigo', $codigo, PDO::PARAM_STR);
+        $stmt->bindParam(':nombre', $nombre, PDO::PARAM_STR);
+        $stmt->bindParam(':salario', $salario, PDO::PARAM_STR);
+        $stmt->bindParam(':hijos', $hijos, PDO::PARAM_INT);
+        $stmt->bindParam(':fNacimiento', $fNacimiento, PDO::PARAM_STR);
+        $stmt->execute();
+    } catch (PDOException $e) {
+        die("Error al insertar comercial: " . $e->getMessage());
+    }
+}
+function insertarProducto($referencia, $nombre, $descripcion, $precio, $descuento) {
+    global $pdo;
+    try {
+        $stmt = $pdo->prepare("INSERT INTO Productos (referencia, nombre, descripcion, precio, descuento) VALUES (:referencia, :nombre, :descripcion, :precio, :descuento)");
+        $stmt->bindParam(':referencia', $referencia, PDO::PARAM_STR);
+        $stmt->bindParam(':nombre', $nombre, PDO::PARAM_STR);
+        $stmt->bindParam(':descripcion', $descripcion, PDO::PARAM_STR);
+        $stmt->bindParam(':precio', $precio, PDO::PARAM_STR);
+        $stmt->bindParam(':descuento', $descuento, PDO::PARAM_INT);
+        $stmt->execute();
+    } catch (PDOException $e) {
+        die("Error al insertar producto: " . $e->getMessage());
+    }
+}
+
+
 
 function modificarVenta($venta_id, $comercial_id, $producto_referencia, $fecha, $cantidad) {
     global $pdo;
