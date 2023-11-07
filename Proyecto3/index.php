@@ -14,9 +14,14 @@
     <h2>Más Operaciones</h2>
     <ul>
         <li><a href="insertar_datos.php">Insertar Datos</a></li>
+        <li><a href="insertar_ventas.php">Insertar Vebta</a></li>
+    </ul>
+    <ul>
         <li><a href="modificar_datos.php">Modificar Datos</a></li>
         <li><a href="eliminar_datos.php">Eliminar Datos</a></li>
     </ul>
+        
+
     
 </body>
 </html>

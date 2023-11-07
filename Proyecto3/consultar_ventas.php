@@ -50,5 +50,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["comercial_id"])) {
             <?php endforeach; ?>
         </table>
     <?php endif; ?>
+    <h3><a href="index.php">Volver</a></h3>
 </body>
 </html>

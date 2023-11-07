@@ -24,12 +24,12 @@ function consultarVentasPorComercial($comercial_id) {
 
 function consultarComerciales() {
     global $pdo;
-    return consultarDatos($pdo, "Comerciales", ["codigo", "nombre"]);
+    return consultarDatos($pdo, "Comerciales", ["codigo", "nombre", "salario", "fNacimiento"]);
 }
 
 function consultarProductos() {
     global $pdo;
-    return consultarDatos($pdo, "Productos", ["referencia", "nombre"]);
+    return consultarDatos($pdo, "Productos", ["referencia", "nombre", "descripcion", "precio", "descuento"]);
 }
 
 function consultarDatos($pdo, $table, $columns) {

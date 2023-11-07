@@ -11,12 +11,21 @@ body {
 }
 
 /* Style the header */
-h1, h2 {
+h1 {
     background-color: #751cba;
     color: white;
     text-align: center;
     padding: 20px;
     
+}
+h2, h3{
+    
+    background-color: rgb(103, 39, 111);
+    color: aliceblue;
+    text-align: center;
+    padding: 20px;
+    margin-left: 600px;
+    margin-right: 600px;
 }
 
 /* Style the menu options */

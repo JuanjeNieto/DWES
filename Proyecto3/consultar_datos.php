@@ -8,10 +8,10 @@ $columns = [];
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["table"])) {
     $table_name = $_POST["table"];
     if ($table_name === "comerciales") {
-        $columns = ["codigo", "nombre"];
+        $columns = ["codigo", "nombre", "salario", "fNacimiento"];
         $datos = consultarComerciales();
     } elseif ($table_name === "productos") {
-        $columns = ["referencia", "nombre"];
+        $columns = ["referencia", "nombre", "descripcion", "precio", "descuento"];
         $datos = consultarProductos();
     }
 }
@@ -51,5 +51,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["table"])) {
             <?php endforeach; ?>
         </table>
     <?php endif; ?>
+    <h3><a href="index.php">Volver</a></h3>
 </body>
 </html>
