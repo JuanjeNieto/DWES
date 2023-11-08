@@ -84,14 +84,10 @@ function insertarProducto($referencia, $nombre, $descripcion, $precio, $descuent
     }
 }
 
-
-
-function modificarVenta($venta_id, $comercial_id, $producto_referencia, $fecha, $cantidad) {
+function modificarVenta($venta_id, $fecha, $cantidad) {
     global $pdo;
     try {
-        $stmt = $pdo->prepare("UPDATE Ventas SET codComercial = :comercial_id, refProducto = :producto_referencia, cantidad = :cantidad, fecha = :fecha WHERE venta_id = :venta_id");
-        $stmt->bindParam(':comercial_id', $comercial_id, PDO::PARAM_STR);
-        $stmt->bindParam(':producto_referencia', $producto_referencia, PDO::PARAM_STR);
+        $stmt = $pdo->prepare("UPDATE Ventas SET cantidad = :cantidad, fecha = :fecha WHERE venta_id = :venta_id");
         $stmt->bindParam(':cantidad', $cantidad, PDO::PARAM_INT);
         $stmt->bindParam(':fecha', $fecha, PDO::PARAM_STR);
         $stmt->bindParam(':venta_id', $venta_id, PDO::PARAM_INT);
@@ -101,6 +97,36 @@ function modificarVenta($venta_id, $comercial_id, $producto_referencia, $fecha, 
     }
 }
 
+function modificarProducto($referencia, $nombre, $descripcion, $precio, $descuento){
+    global $pdo;
+    try {
+        $stmt = $pdo->prepare("UPDATE Productos SET nombre = :nombre, descripcion = :descripcion, precio = :precio, descuento = :descuento WHERE referencia = :referencia");
+        $stmt->bindParam(':referencia', $referencia, PDO::PARAM_STR);
+        $stmt->bindParam(':nombre', $nombre, PDO::PARAM_STR);
+        $stmt->bindParam(':descripcion', $descripcion, PDO::PARAM_STR);
+        $stmt->bindParam(':precio', $precio, PDO::PARAM_STR);
+        $stmt->bindParam(':descuento', $descuento, PDO::PARAM_INT);
+        $stmt->execute();
+    } catch (PDOException $e) {
+        die('Error al modificar producto: '. $e->getMessage());
+    }
+}
+
+function modificarComercial($codigo, $nombre, $salario, $hijos, $fNacimiento){
+    global $pdo;
+    try {   
+        $stmt = $pdo->prepare('UPDATE Comerciales SET nombre = :nombre, salario = :salario, hijos = :hijos, fNacimiento = :fNacimiento WHERE codigo = :codigo'  );
+        $stmt->bindParam(':codigo', $codigo, PDO::PARAM_STR);
+        $stmt->bindParam(':nombre', $nombre, PDO::PARAM_STR);
+        $stmt->bindParam(':salario', $salario, PDO::PARAM_STR);
+        $stmt->bindParam(':hijos', $hijos, PDO::PARAM_INT);
+        $stmt->bindParam(':fNacimiento', $fNacimiento, PDO::PARAM_STR);
+        $stmt->execute();
+
+    } catch (PDOException $e) {
+        die('Error al modificar el comercial'. $e->getMessage());
+    }
+}
 function eliminarVenta($venta_id) {
     global $pdo;
     try {
