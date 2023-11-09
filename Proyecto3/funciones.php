@@ -10,6 +10,8 @@ try {
     die("Error de conexión a la base de datos: " . $e->getMessage());
 }
 
+// consultar funciones
+
 function consultarVentasPorComercial($comercial_id) {
     global $pdo;
     try {
@@ -41,6 +43,8 @@ function consultarDatos($pdo, $table, $columns) {
     }
 }
 
+
+// insertar funciones
 
 function insertarVenta($comercial_id, $producto_referencia, $fecha, $cantidad) {
     global $pdo;
@@ -84,18 +88,22 @@ function insertarProducto($referencia, $nombre, $descripcion, $precio, $descuent
     }
 }
 
-function modificarVenta($venta_id, $fecha, $cantidad) {
+// modificar funciones
+
+function modificarVenta($codComercial, $refProducto, $fecha, $nuevaCantidad, $nuevaFecha) {
     global $pdo;
     try {
-        $stmt = $pdo->prepare("UPDATE Ventas SET cantidad = :cantidad, fecha = :fecha WHERE venta_id = :venta_id");
-        $stmt->bindParam(':cantidad', $cantidad, PDO::PARAM_INT);
-        $stmt->bindParam(':fecha', $fecha, PDO::PARAM_STR);
-        $stmt->bindParam(':venta_id', $venta_id, PDO::PARAM_INT);
+        $stmt = $pdo->prepare("UPDATE Ventas SET cantidad = :nuevaCantidad, fecha = :nuevaFecha WHERE codComercial = :codComercial AND refProducto = :refProducto");
+        $stmt->bindParam(':nuevaCantidad', $nuevaCantidad, PDO::PARAM_INT);
+        $stmt->bindParam(':nuevaFecha', $nuevaFecha, PDO::PARAM_STR);
+        $stmt->bindParam(':codComercial', $codComercial, PDO::PARAM_STR);
+        $stmt->bindParam(':refProducto', $refProducto, PDO::PARAM_STR);
         $stmt->execute();
     } catch (PDOException $e) {
         die("Error al modificar venta: " . $e->getMessage());
     }
 }
+
 
 function modificarProducto($referencia, $nombre, $descripcion, $precio, $descuento){
     global $pdo;
@@ -127,6 +135,10 @@ function modificarComercial($codigo, $nombre, $salario, $hijos, $fNacimiento){
         die('Error al modificar el comercial'. $e->getMessage());
     }
 }
+
+// eliminar funciones
+
+
 function eliminarVenta($venta_id) {
     global $pdo;
     try {
@@ -137,6 +149,8 @@ function eliminarVenta($venta_id) {
         die("Error al eliminar venta: " . $e->getMessage());
     }
 }
+
+//control para verificar codigo 
 
 function controlIntegridadReferencialVenta($producto_referencia) {
     global $pdo;
