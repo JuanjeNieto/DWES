@@ -19,7 +19,7 @@
         <li><a href="consultar_ventas.php">Consultar Ventas por Comercial</a></li>
         <li><a href="insertar_ventas.php">Insertar Ventas</a></li>
         <li><a href="modificar_ventas.php">Modificar Ventas</a></li>
-        <li><a href="eliminar_ventas">Eliminar Ventas</a></li>
+        <li><a href="eliminar_ventas.php">Eliminar Ventas</a></li>
     </ul>
         
 

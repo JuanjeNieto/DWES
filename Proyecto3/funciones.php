@@ -138,17 +138,22 @@ function modificarComercial($codigo, $nombre, $salario, $hijos, $fNacimiento){
 
 // eliminar funciones
 
-
-function eliminarVenta($venta_id) {
+function eliminarVenta($codComercial, $refProducto, $fecha) {
     global $pdo;
     try {
-        $stmt = $pdo->prepare("DELETE FROM Ventas WHERE venta_id = :venta_id");
-        $stmt->bindParam(':venta_id', $venta_id, PDO::PARAM_INT);
+        $stmt = $pdo->prepare("DELETE FROM Ventas WHERE codComercial = :codComercial AND refProducto = :refProducto AND fecha = :fecha");
+        $stmt->bindParam(':codComercial', $codComercial, PDO::PARAM_STR);
+        $stmt->bindParam(':refProducto', $refProducto, PDO::PARAM_STR);
+        $stmt->bindParam(':fecha', $fecha, PDO::PARAM_STR);
+
         $stmt->execute();
     } catch (PDOException $e) {
         die("Error al eliminar venta: " . $e->getMessage());
     }
+    error_reporting(E_ALL);
+    ini_set('display_errors', 1);
 }
+
 
 //control para verificar codigo 
 
