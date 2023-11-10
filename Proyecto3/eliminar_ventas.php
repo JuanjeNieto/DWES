@@ -3,12 +3,11 @@ include("funciones.php");
 
 $comerciales = consultarComerciales();
 
-$selectedComercial = null;
 $ventas = [];
 
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["comercial_id"])) {
     $comercial_id = $_POST["comercial_id"];
-    $selectedComercial = $comercial_id;
+
     $ventas = consultarVentasPorComercial($comercial_id);
 }
 
@@ -29,11 +28,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["venta_id"])) {
 <html lang="es">
 <head>
     <title>Eliminar Venta</title>
-    <!-- Add your CSS styles here -->
-    <style>
-        /* Add your CSS styles for the page */
-        /* Example: body { background-color: #f0f0f0; } */
-    </style>
+    <link rel="stylesheet" type="text/css" href="styles.css">
 </head>
 <body>
     <h1>Eliminar Venta</h1>

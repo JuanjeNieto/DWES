@@ -141,17 +141,27 @@ function modificarComercial($codigo, $nombre, $salario, $hijos, $fNacimiento){
 function eliminarVenta($codComercial, $refProducto, $fecha) {
     global $pdo;
     try {
-        $stmt = $pdo->prepare("DELETE FROM Ventas WHERE codComercial = :codComercial AND refProducto = :refProducto AND fecha = :fecha");
+        $stmt = $pdo->prepare('DELETE FROM Ventas WHERE codComercial = :codComercial AND refProducto = :refProducto AND fecha = :fecha');
         $stmt->bindParam(':codComercial', $codComercial, PDO::PARAM_STR);
         $stmt->bindParam(':refProducto', $refProducto, PDO::PARAM_STR);
         $stmt->bindParam(':fecha', $fecha, PDO::PARAM_STR);
-
         $stmt->execute();
     } catch (PDOException $e) {
         die("Error al eliminar venta: " . $e->getMessage());
     }
     error_reporting(E_ALL);
     ini_set('display_errors', 1);
+}
+
+function eliminarProducto ($refProducto){
+    global $pdo;
+    try {
+        $stmt = $pdo->prepare('DELETE FROM Productos WHERE referencia = :refProducto');
+        $stmt->bindParam(':refProducto', $refProducto, PDO::PARAM_STR);
+        $stmt->execute();
+    } catch (PDOException $e) {
+        die('Error al eliminar producto'. $e->getMessage());
+    }
 }
 
 
