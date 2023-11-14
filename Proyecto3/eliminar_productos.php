@@ -23,7 +23,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 </head>
 <body>
     <h1>Eliminar Datos</h1>
-
+    <h2>Al eliminar el producto/comercual, se elimina automáticamente cualquier venta asociada</h2>
     <form method="post">
         <label for="referencia">Selecciona un Producto:</label>
         <select name="referencia">
@@ -37,5 +37,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         <input type="hidden" name="table" value="productos">
         <input type="submit" value="Eliminar Producto">        
     </form>
+    <h3><a href="index.php">Volver</a></h3>
 </body>
 </html>

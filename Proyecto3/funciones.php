@@ -138,29 +138,76 @@ function modificarComercial($codigo, $nombre, $salario, $hijos, $fNacimiento){
 
 // eliminar funciones
 
-function eliminarVenta($codComercial, $refProducto, $fecha) {
+function eliminarVenta($codComercial, $refProducto) {
     global $pdo;
     try {
-        $stmt = $pdo->prepare('DELETE FROM Ventas WHERE codComercial = :codComercial AND refProducto = :refProducto AND fecha = :fecha');
+        $stmt = $pdo->prepare("SELECT * FROM Ventas WHERE codComercial = :codComercial AND refProducto = :refProducto");
         $stmt->bindParam(':codComercial', $codComercial, PDO::PARAM_STR);
         $stmt->bindParam(':refProducto', $refProducto, PDO::PARAM_STR);
-        $stmt->bindParam(':fecha', $fecha, PDO::PARAM_STR);
+     
         $stmt->execute();
+
+        $venta = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if ($venta) {
+            // If the venta exists, delete
+            $deleteStmt = $pdo->prepare("DELETE FROM Ventas WHERE codComercial = :codComercial AND refProducto = :refProducto");
+            $deleteStmt->bindParam(':codComercial', $codComercial, PDO::PARAM_STR);
+            $deleteStmt->bindParam(':refProducto', $refProducto, PDO::PARAM_STR);
+            $deleteStmt->execute();
+        } else {
+            die("Venta no encontrada.");
+        }
     } catch (PDOException $e) {
         die("Error al eliminar venta: " . $e->getMessage());
     }
-    error_reporting(E_ALL);
-    ini_set('display_errors', 1);
 }
+
 
 function eliminarProducto ($refProducto){
     global $pdo;
     try {
+        eliminarVentasDeProducto($refProducto);
         $stmt = $pdo->prepare('DELETE FROM Productos WHERE referencia = :refProducto');
         $stmt->bindParam(':refProducto', $refProducto, PDO::PARAM_STR);
         $stmt->execute();
     } catch (PDOException $e) {
         die('Error al eliminar producto'. $e->getMessage());
+    }
+}
+
+function eliminarComercial($codigo){
+    global $pdo;
+    try{
+        eliminarVentasDeComercial($codigo);
+        $stmt = $pdo->prepare('DELETE FROM Comerciales  WHERE codigo= :codigo');
+        $stmt->bindParam(':codigo', $codigo, PDO::PARAM_STR);
+        $stmt->execute();
+
+    } catch (PDOException $e) {
+        die('Error al eliminar comercial'. $e->getMessage());
+    }
+}
+
+function eliminarVentasDeProducto($refProducto) {
+    global $pdo;
+    try {
+        $stmt = $pdo->prepare('DELETE FROM Ventas WHERE refProducto = :refProducto');
+        $stmt->bindParam(':refProducto', $refProducto, PDO::PARAM_STR);
+        $stmt->execute();
+    } catch (PDOException $e) {
+        die('Error al eliminar ventas asociadas al producto' . $e->getMessage());
+    }
+}
+
+function eliminarVentasDeComercial($codComercial) {
+    global $pdo;
+    try {
+        $stmt = $pdo->prepare('DELETE FROM Ventas WHERE codComercial = :codComercial');
+        $stmt->bindParam(':codComercial', $codComercial, PDO::PARAM_STR);
+        $stmt->execute();
+    } catch (PDOException $e) {
+        die('Error al eliminar ventas asociadas al comercial' . $e->getMessage());
     }
 }
 

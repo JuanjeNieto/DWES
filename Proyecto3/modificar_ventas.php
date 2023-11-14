@@ -94,5 +94,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["venta_id"], $_POST["ca
         <input type="submit" value="Modificar Venta">
     </form>
 <?php } ?>
+<h3><a href="index.php">Volver</a></h3>
 </body>
 </html>

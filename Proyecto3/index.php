@@ -11,7 +11,9 @@
         <li><a href="consultar_datos.php">Consultar Producto o Comercial</a></li>
         <li><a href="insertar_datos.php">Insertar Producto o Comercial</a></li>
         <li><a href="modificar_datos.php">Modificar Producto o Comercial</a></li>
-        <li><a href="eliminar_datos.php">Eliminar Datos</a></li>
+        <br>
+        <li><a href="eliminar_productos.php">Eliminar producutos</a></li>
+        <li><a href="eliminar_comerciales.php">Eliminar comerciales</a></li>
     
     </ul>
     <h2>Ventas</h2>

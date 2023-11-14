@@ -55,5 +55,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
         <input type="submit" value="Insertar Venta">
     </form>
+    <h3><a href="index.php">Volver</a></h3>
 </body>
 </html>
