@@ -1,0 +1,9 @@
+::U3::
+What is the primary difference between PDO and MySQLi when connecting a database in PHP?{
+= PDO offers a consistent interface for various databases, while MySQLi is specific to MySQL.
+~%-25% PDO is for Python databases and MySQLi is for MySQL only.
+~%-25% MySQLi is an outdated method while PDO is modern.
+~%-25% Both PDO and MySQLi exclusively support MySQL databases.
+}
+
+

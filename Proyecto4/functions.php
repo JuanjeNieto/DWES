@@ -6,8 +6,8 @@ function connectDB() {
     error_reporting(E_ALL);
 
     $servername = "localhost";
-    $username = "your_db_username";
-    $password = "your_db_password";
+    $username = "dwes";
+    $password = "dwes";
     $dbname = "tarea4";
 
     try {
