@@ -54,8 +54,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <button type="submit">Login</button>
 </form>
 <p>
-    Entrar como invitado:
-    <a href="informacion.php"><button>Entrar</button></a>
+    Enter as guest:
+    <a href="informacion.php"><button>Enter</button></a>
 </p>
 
 </body>

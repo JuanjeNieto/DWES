@@ -6,12 +6,12 @@ function connectDB() {
     error_reporting(E_ALL);
 
     $servername = "localhost";
-    $username = "dwes";
-    $password = "dwes";
+    $dbusername = "dwes";
+    $dbpassword = "dwes";
     $dbname = "tarea4";
 
     try {
-        $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+        $conn = new PDO("mysql:host=$servername;dbname=$dbname", $dbusername, $dbpassword);
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
         return $conn;
