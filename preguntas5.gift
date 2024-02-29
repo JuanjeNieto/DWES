@@ -1,0 +1,29 @@
+::U4::
+What is the primary purpose of the setCookie() function in PHP in the context of managing cookies in a web application?
+{
+= Set a new cookie in the user's browser.
+~%-25% Transmit sensitive data to the server securely.
+~%-25% Modify the web server configuration.
+~%-25% Deletes and kills the cookie and the user.
+}
+
+::U4::
+In the context of web development, what is the primary role of session_start() in PHP?
+{
+= Start a new PHP session for a user.
+~%-25% Terminate an existing user session.
+~%-25% Starts a javascript session.
+~%-25% Plays with information of the database.
+}
+
+::U4::
+In the context of web server security, what is the purpose of the htpasswd file when used with Apache HTTP Server?
+{
+= Store encrypted passwords for authentication.
+~%-25% Define server-side scripting rules.
+~%-25% Configure SSl/TLS for safe comunications.
+~%-25% Change passwords randomly in database.
+}
+
+
+ 

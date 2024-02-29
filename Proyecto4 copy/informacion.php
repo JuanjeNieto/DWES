@@ -15,7 +15,7 @@ if (!isset($_SESSION["username"])) {
     $loginTime = $_SESSION["login_time"];
 
     // Get the user-specific background color from the session or the cookie
-    $backgroundColor = isset($_SESSION["background_color"]) ? $_SESSION["background_color"] : "white";
+    $backgroundColor = getBackgroundColor();
 }
 ?>
 
