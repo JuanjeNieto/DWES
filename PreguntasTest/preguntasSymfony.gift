@@ -1,0 +1,25 @@
+::symfony::
+What is the main function of the services.yaml file in Symfony?
+{
+= It defines the services that will be available in the application and how they should be created.
+~%-25% It sets up the routes of the application, and the actions to be performed.
+~%-25% It defines the database entities, and defines their relationships.
+~%-25% It controls the security configuration and authentication in the Symfony application.
+}
+::symfony::
+What is a controller in Symfony and what is its main purpose?
+{
+= A controller in Symfony is a PHP class that handles HTTP requests and returns a response.
+~%-25% A configuration file that sets up the application routes.
+~%-25% A Twig template used to render views.
+~%-25% A Symfony component that manages security and authentication.
+}
+
+::symfony::
+How does Symfony's form component facilitate CRUD operations in Symfony applications?
+{
+= Symfony's form component provides an easy way to create, validate, and handle form submissions, which are often used in CRUD operations to interact with database entities.
+~%-25% Symfony's form component directly executes CRUD operations on the database.
+~%-25% Symfony's form component manages the routing for CRUD operations in Symfony applications.
+~%-25% Symfony's form component automatically generates database schemas for CRUD operations.
+}
