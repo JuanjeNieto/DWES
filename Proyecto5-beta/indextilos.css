@@ -1,0 +1,78 @@
+/* Estilos generales */
+body {
+    font-family: Arial, sans-serif;
+    background-color: azure;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.container {
+    max-width: 800px;
+    padding: 20px;
+    background-color: #d46f6f; /* Fondo blanco para el contenido */
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Estilos para el encabezado */
+h1 {
+    background-color: aquamarine;
+    color: #333;
+    font-size: 32px;
+    text-align: center;
+}
+
+h2 {
+    background-color: aliceblue;
+    color: #555;
+    font-size: 24px;
+    margin-top: 20px;
+}
+
+/* Estilos para la lista de enlaces */
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+li {
+    margin-bottom: 10px;
+}
+
+a {
+    text-decoration: none;
+    color: #0078d4; /* Enlaces azules */
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Estilos para los botones */
+.button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #0078d4; /* Botones azules */
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.button:hover {
+    background-color: #005eaa;
+}
+
+/* Estilos para los enlaces en el menú */
+.menu a {
+    font-size: 18px;
+    margin-right: 20px;
+}

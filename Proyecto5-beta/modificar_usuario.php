@@ -47,8 +47,11 @@ try {
 <head>
     <meta charset="UTF-8">
     <title>Modificar Datos de Usuario</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
 </head>
 <body>
+
+
     <h1>Modificar Datos de Usuario</h1>
 
     <!-- Formulario de modificación de usuario -->
